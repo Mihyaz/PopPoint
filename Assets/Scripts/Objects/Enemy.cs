@@ -33,7 +33,7 @@ public class Enemy : MovingObject
         if (!_isHit)
         {
             float step = 1.25f * Time.deltaTime;
-            _transform.position = Vector2.MoveTowards(transform.position, new Vector2(Mathf.Cos(_movement.RadAngle) * 2, Mathf.Sin(_movement.RadAngle) * 2), step);
+            _transform.position = Vector2.MoveTowards(_transform.position, new Vector2(Mathf.Cos(_movement.RadAngle) * 2, Mathf.Sin(_movement.RadAngle) * 2), step);
         }
     }
 
