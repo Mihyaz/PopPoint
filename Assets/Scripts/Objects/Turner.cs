@@ -32,7 +32,7 @@ public class Turner : MonoBehaviour
     
     void Update()
     {
-        transform.Rotate(0, 0, _movement.RotationSpeed * Time.deltaTime * 10 * _movement.RotationDegree);
+        _movement.Rotate(SpeedTypes.Turner);
     }
 
     private void OnDisable()

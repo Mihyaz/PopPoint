@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
 
-        transform.Rotate(0, 0, _movement.RotationSpeed * Time.deltaTime * 15 * _movement.RotationDegree);
+        _movement.Rotate(SpeedTypes.Player);
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
