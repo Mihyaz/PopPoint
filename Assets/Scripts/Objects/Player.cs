@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
             AnimatorManager.GameOver.SetTrigger("gameOver");
             ObjectPooler.enabled = false;
             SwingButton.interactable = false;
-            
         };
 
         GameManager.OnRestart += () =>
