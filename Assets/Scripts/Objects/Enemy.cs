@@ -12,7 +12,6 @@ public class Enemy : MovingObject
     private void Awake()
     {
         _movement = GetComponent<IMove>();
-        _transform = transform;
     }
 
     private void Start()
@@ -33,7 +32,7 @@ public class Enemy : MovingObject
         if (!_isHit)
         {
             float step = 1.25f * Time.deltaTime;
-            _transform.position = Vector2.MoveTowards(_transform.position, new Vector2(Mathf.Cos(_movement.RadAngle) * 2, Mathf.Sin(_movement.RadAngle) * 2), step);
+            _transform.position = Vector2.MoveTowards(_movement.Transform.position, new Vector2(Mathf.Cos(_movement.RadAngle) * 2, Mathf.Sin(_movement.RadAngle) * 2), step);
         }
     }
 
@@ -47,7 +46,7 @@ public class Enemy : MovingObject
     }
     private void OnDisable()
     {
-        _transform.position = new Vector2(0, 0);
+        _movement.Transform.position = new Vector2(0, 0);
     }
 
     public void PlayAnim()
@@ -58,7 +57,7 @@ public class Enemy : MovingObject
 
     public Tween DieTween()
     {
-        return _transform.DOScale(0, 0.5f).OnComplete(() =>
+        return _movement.Transform.DOScale(0, 0.5f).OnComplete(() =>
         {
             gameObject.SetActive(false);
         });
