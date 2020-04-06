@@ -21,8 +21,14 @@ public class Player : MonoBehaviour
         
         GameManager.OnGameOver += () =>
         {
+            _component.HandleReset();
             _state.HandleSave();
+            enabled = false;
+            
+            AnimatorManager.GameOver.SetTrigger("gameOver");
+            ObjectPooler.enabled = false;
             SwingButton.interactable = false;
+            
         };
 
         GameManager.OnRestart += () =>
@@ -80,12 +86,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             SoundManager.Instance.PlaySingle(SoundTypes.Die);
-            enabled = false;
-            _component.HandleReset();
-            AnimatorManager.GameOver.SetTrigger("gameOver");
             StartCoroutine(MihyazDelay.Delay(1.3f, () => SoundManager.Instance.PlaySingle(SoundTypes.GameOver)));
             GameManager.Instance.GameOver();
-            ObjectPooler.enabled = false;
         }
     }
 
