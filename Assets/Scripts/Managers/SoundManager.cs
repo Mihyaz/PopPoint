@@ -43,7 +43,6 @@ public class SoundManager : MonoBehaviour
             EfxSource.clip = _soundType.Sounds[sound];
             EfxSource.PlayOneShot(EfxSource.clip);
         }
-        
     }
 
     public void Mute()
