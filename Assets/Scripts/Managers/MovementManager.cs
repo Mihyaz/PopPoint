@@ -22,11 +22,6 @@ public class MovementManager : MonoBehaviour, IMove
         Transform.Rotate(0, 0, RotationSpeed * Time.deltaTime * SpeedType.Speedies[type] * RotationDegree);
     }
 
-    public void Rotate(int speed)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public class Speeds
     {
         public Dictionary<SpeedTypes, int> Speedies = new Dictionary<SpeedTypes, int>();
