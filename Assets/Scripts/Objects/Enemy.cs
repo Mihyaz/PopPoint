@@ -12,6 +12,7 @@ public class Enemy : MovingObject
     private void Awake()
     {
         _movement = GetComponent<IMove>();
+        _movement.Transform = transform;
     }
 
     private void Start()
@@ -21,7 +22,7 @@ public class Enemy : MovingObject
 
     void OnEnable()
     {
-        _transform.DOScale(0.3f, 0.5f);
+        _movement.Transform.DOScale(new Vector2(0.3f, 0.3f), 0.5f);
         _movement.Angle = Random.Range(0, 360);
         _movement.RadAngle = _movement.Angle * Mathf.Deg2Rad;
         _isHit = false;
@@ -32,7 +33,7 @@ public class Enemy : MovingObject
         if (!_isHit)
         {
             float step = 1.25f * Time.deltaTime;
-            _transform.position = Vector2.MoveTowards(_movement.Transform.position, new Vector2(Mathf.Cos(_movement.RadAngle) * 2, Mathf.Sin(_movement.RadAngle) * 2), step);
+            _movement.Transform.position = Vector2.MoveTowards(_movement.Transform.position, new Vector2(Mathf.Cos(_movement.RadAngle) * 2, Mathf.Sin(_movement.RadAngle) * 2), step);
         }
     }
 

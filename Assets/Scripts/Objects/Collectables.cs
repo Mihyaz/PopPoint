@@ -39,7 +39,7 @@ public class Collectables : MovingObject
 
     private void OnDisable()
     {
-        gameObject.transform.position = new Vector2(0, 0);
+        _movement.Transform.position = new Vector2(0, 0);
     }
 
     public void DisableThisObject()

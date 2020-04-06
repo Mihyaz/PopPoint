@@ -45,9 +45,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _movement = GetComponent<IMove>();
-        _state = GetComponent<IState>();
-        _component = GetComponent<IComponent>();     
+        _movement   = GetComponent<IMove>();
+        _state      = GetComponent<IState>();
+        _component  = GetComponent<IComponent>();     
     }
     
     private void OnEnable()

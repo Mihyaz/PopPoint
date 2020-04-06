@@ -15,13 +15,14 @@ public class Turner : MonoBehaviour
         _movement.RotationDegree = Random.Range(-1, 2);
         if (_movement.RotationDegree == 0)
             _movement.RotationDegree = -1;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, _player.transform.rotation.eulerAngles.z + 90 * _movement.RotationDegree));
+        _movement.Transform.rotation = Quaternion.Euler(new Vector3(0, 0, _player.transform.rotation.eulerAngles.z + 90 * _movement.RotationDegree));
         _shader.gameObject.SetActive(true);
     }
 
     private void Awake()
     {
         _movement = GetComponent<IMove>();
+        _movement.Transform = transform;
     }
 
     void Start()
