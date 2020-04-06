@@ -31360,7 +31360,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a88b960f612b944db9c71676f34d1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableList: []
+  CollectableList:
+  - {fileID: 308862116}
+  - {fileID: 1289708746}
+  - {fileID: 1984456133}
+  - {fileID: 1953509955}
+  - {fileID: 371688086}
   EnemyList:
   - {fileID: 1856777519725798424}
   - {fileID: 1856777520288611478}
