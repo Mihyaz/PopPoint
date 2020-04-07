@@ -12,6 +12,9 @@ public class UIElementsManager : MonoBehaviour
     public Text Highscore;
     public Text Combo;
 
+    public RectTransform GameOverCanvas;
+    public GameObject InGameCanvas;
+
     private void Awake()
     {
        Score.text = "0";

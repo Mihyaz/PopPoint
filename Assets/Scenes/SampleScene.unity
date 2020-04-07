@@ -5676,7 +5676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba46dfb547fff04ebc5b1925a18c8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectPooler: {fileID: 1302708829}
 --- !u!212 &425277311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5867,6 +5866,8 @@ MonoBehaviour:
   Announcer: {fileID: 1813252499}
   Highscore: {fileID: 943562046}
   Combo: {fileID: 267925361}
+  GameOverCanvas: {fileID: 688021301}
+  InGameCanvas: {fileID: 878170384}
 --- !u!114 &511058896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36637,7 +36638,6 @@ GameObject:
   - component: {fileID: 1622323958}
   - component: {fileID: 1622323960}
   - component: {fileID: 1622323959}
-  - component: {fileID: 1622323961}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -36704,25 +36704,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622323957}
   m_CullTransparentMesh: 0
---- !u!95 &1622323961
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622323957}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3b7e2dba747cc8342b5d58428561215b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1636287698
 GameObject:
   m_ObjectHideFlags: 0
@@ -36765,7 +36746,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636287698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 737347c9036857740950255767f69361, type: 2}
   m_CullingMode: 0
@@ -37203,10 +37184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b432c96818e59746a077ebb84e3cc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOver: {fileID: 1636287700}
-  Green: {fileID: 2057962155}
-  Score: {fileID: 1622323961}
-  Combo: {fileID: 267925360}
 --- !u!1 &2057962151
 GameObject:
   m_ObjectHideFlags: 0

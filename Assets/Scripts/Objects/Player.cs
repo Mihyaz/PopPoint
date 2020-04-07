@@ -20,8 +20,9 @@ public class Player : MonoBehaviour
             _component.HandleReset();
             _state.HandleSave();
             enabled = false;
-            
-            AnimatorManager.GameOver.SetTrigger("gameOver");
+
+            AnimatorManager.TweenGameOver();
+            //AnimatorManager.GameOver.SetTrigger("gameOver");
         };
 
         GameManager.OnRestart += () =>
@@ -29,8 +30,8 @@ public class Player : MonoBehaviour
             _component.HandleRestart();
             _state.Score = 0;
             enabled = true;
-
-            AnimatorManager.GameOver.SetTrigger("restart");
+            AnimatorManager.TweenRestart();
+            //AnimatorManager.GameOver.SetTrigger("restart");
         };
 
     }
@@ -76,9 +77,9 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            GameManager.Instance.GameOver();
             SoundManager.Instance.PlaySingle(SoundTypes.Die);
             StartCoroutine(MihyazDelay.Delay(1.3f, () => SoundManager.Instance.PlaySingle(SoundTypes.GameOver)));
-            GameManager.Instance.GameOver();
         }
     }
 
