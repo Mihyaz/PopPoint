@@ -8,6 +8,11 @@ public class ObjectPooler : MonoBehaviour
     public List<GameObject> EnemyList = new List<GameObject>();
 
     public GameObject Turner;
+    private void Awake()
+    {
+        GameManager.OnGameOver += () => { enabled = false; };
+        GameManager.OnRestart  += () => { enabled = true; };
+    }
 
     private void Start()
     {

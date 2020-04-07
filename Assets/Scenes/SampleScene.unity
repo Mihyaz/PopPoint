@@ -5677,7 +5677,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectPooler: {fileID: 1302708829}
-  SwingButton: {fileID: 1537384973}
 --- !u!212 &425277311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36509,6 +36508,7 @@ GameObject:
   - component: {fileID: 1537384975}
   - component: {fileID: 1537384974}
   - component: {fileID: 1537384973}
+  - component: {fileID: 1537384976}
   m_Layer: 5
   m_Name: SwingButton
   m_TagString: Untagged
@@ -36577,18 +36577,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537384974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 425277310}
-        m_MethodName: Swing
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1537384974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36625,6 +36614,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537384971}
   m_CullTransparentMesh: 0
+--- !u!114 &1537384976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537384971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162a72d22b8f91b438f454329ce594ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1622323957
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,6 @@ using Zenject;
 public class Player : MonoBehaviour
 {
     [Inject] AnimatorManager AnimatorManager;
-
-    public ObjectPooler ObjectPooler;
-    public Button SwingButton;
-
     #region Interface Objects
     private IMove _movement;
     private IState _state;
@@ -26,8 +22,6 @@ public class Player : MonoBehaviour
             enabled = false;
             
             AnimatorManager.GameOver.SetTrigger("gameOver");
-            ObjectPooler.enabled = false;
-            SwingButton.interactable = false;
         };
 
         GameManager.OnRestart += () =>
@@ -37,8 +31,6 @@ public class Player : MonoBehaviour
             enabled = true;
 
             AnimatorManager.GameOver.SetTrigger("restart");
-            ObjectPooler.enabled = true;
-            SwingButton.interactable = true;
         };
 
     }
