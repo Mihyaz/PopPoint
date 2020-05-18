@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
             enabled = false;
 
             AnimatorManager.TweenGameOver();
-            //AnimatorManager.GameOver.SetTrigger("gameOver");
         };
 
         GameManager.OnRestart += () =>
@@ -31,7 +30,6 @@ public class Player : MonoBehaviour
             _state.Score = 0;
             enabled = true;
             AnimatorManager.TweenRestart();
-            //AnimatorManager.GameOver.SetTrigger("restart");
         };
 
     }
