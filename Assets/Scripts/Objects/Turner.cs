@@ -4,12 +4,19 @@ using Random = UnityEngine.Random;
 
 public class Turner : MonoBehaviour
 {
-    [Inject]
-    private Player _player;
-
     [SerializeField] private GameObject _shader;
 
+    private Player _player;
+    private EventBase _eventBase;
     private IMove _movement;
+
+    [Inject]
+    private void OnInstaller(EventBase eventBase, Player player)
+    {
+        _eventBase = eventBase;
+        _player = player;
+    }
+
     private void OnEnable()
     {
         _movement.RotationDegree = Random.Range(-1, 2);
@@ -27,7 +34,7 @@ public class Turner : MonoBehaviour
 
     void Start()
     {
-        GameManager.OnGameOver += DisableGameObject;
+        _eventBase.Subscribe(EventTypes.OnGameOver, DisableGameObject);
         _movement.RotationSpeed = 5f;
     }
     

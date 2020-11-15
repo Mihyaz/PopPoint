@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using Zenject;
-using OnurMihyaz;
+using MihyazUtils.Timer;
 
 public class AnimatorManager : MonoBehaviour
 {

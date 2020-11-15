@@ -1,23 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class Collectables : MovingObject
+public class Collectable : MovingObject
 {
     [SerializeField] private GameObject _particleSystem;
     private IMove _movement;
     private bool _isHit;
 
-    private void Awake()
+    [Inject]
+    protected EventBase _eventBase;
+
+    public void Construct()
     {
         _movement = GetComponent<IMove>();
+        _eventBase.Subscribe(EventTypes.OnGameOver, DisableThisObject);
     }
-    private void Start()
-    {
-        GameManager.OnGameOver += DisableThisObject;
-    }
-    
-    void OnEnable()
+
+    public void Initialize()
     {
         _movement.RotationSpeed = 5f;
         _movement.RotationDegree = 1f;
@@ -37,7 +38,7 @@ public class Collectables : MovingObject
         }
     }
 
-    private void OnDisable()
+    public void Reset()
     {
         _movement.Transform.position = new Vector2(0, 0);
     }

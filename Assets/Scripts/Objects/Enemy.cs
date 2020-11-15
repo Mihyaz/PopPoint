@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Zenject;
 
 public class Enemy : MovingObject
 {
-    private Transform _transform;
     private IMove _movement;
     private bool _isHit;
 
-    private void Awake()
+    [Inject]
+    private EnemyPool _enemyPool;
+    [Inject]
+    protected EventBase _eventBase;
+
+    public void Construct()
     {
         _movement = GetComponent<IMove>();
         _movement.Transform = transform;
     }
 
-    private void Start()
+    public void Initialize()
     {
-        GameManager.OnGameOver += PlayAnim;
-    }
-
-    void OnEnable()
-    {
+        _eventBase.Subscribe(EventTypes.OnGameOver, Die);
         _movement.Transform.DOScale(new Vector2(0.3f, 0.3f), 0.5f);
         _movement.Angle = Random.Range(0, 360);
         _movement.RadAngle = _movement.Angle * Mathf.Deg2Rad;
@@ -41,26 +42,23 @@ public class Enemy : MovingObject
     {       
         if (collision.gameObject.CompareTag("CircleArea"))
         {
-            _isHit = true;
-            DieTween();
+            if (_isHit)
+                return;
+            Die();
         }
     }
-    private void OnDisable()
+    public void Reset()
     {
+        _eventBase.Unsubscribe(EventTypes.OnGameOver, Die);
         _movement.Transform.position = new Vector2(0, 0);
     }
 
-    public void PlayAnim()
+    public void Die()
     {
-        if (this.gameObject != null)
-            DieTween();
-    }
-
-    public Tween DieTween()
-    {
-        return _movement.Transform.DOScale(0, 0.5f).OnComplete(() =>
+        _isHit = true;
+        _movement.Transform.DOScale(0, 0.5f).OnComplete(() =>
         {
-            gameObject.SetActive(false);
+            _enemyPool.Despawn(this);
         });
     }
 }
