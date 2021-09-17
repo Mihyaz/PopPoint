@@ -6,18 +6,10 @@ using Zenject;
 
 public class SwingButton : MonoBehaviour
 {
-    private Player _player;
-    private EventBase _eventBase;
+    [Inject]
+    Player _player;
 
     private Button _button;
-
-    [Inject]
-    private void OnInstaller(EventBase eventBase, Player player)
-	{
-        _eventBase = eventBase;
-        _player = player;
-	}
-
     private void Awake()
     {
         _button = GetComponent<Button>();
@@ -25,9 +17,8 @@ public class SwingButton : MonoBehaviour
 
     private void Start()
     {
-        _eventBase.Subscribe(EventTypes.OnGameOver,    () => { _button.interactable = false; });
-        _eventBase.Subscribe(EventTypes.OnGameRestart, () => { _button.interactable = true; });
-
+        GameManager.OnGameOver += () => { _button.interactable = false; };
+        GameManager.OnRestart  += () => { _button.interactable = true; };
         _button.onClick.AddListener(() => { _player.Swing(); });
     }
 }
